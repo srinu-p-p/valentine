@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Someone Special 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 40px;
+    color: white;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+#yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background-color: white;
+    color: #ff4d6d;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="firstPage">
+    <h1>Hey Beautiful ❤️</h1>
+    <p>I made something special for you...</p>
+    <button onclick="nextPage()">Start 💌</button>
+</div>
+
+<div class="container hidden" id="secondPage">
+    <h1>You Make My World Better 🌎</h1>
+    <p>Every moment with you feels magical ✨</p>
+    <button onclick="nextPage2()">Next ➡️</button>
+</div>
+
+<div class="container hidden" id="finalPage">
+    <h1>Will You Be My Valentine? 💖</h1>
+    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button id="noBtn" onmouseover="moveButton()">No 😅</button>
+</div>
+
+<script>
+function nextPage() {
+    document.getElementById("firstPage").classList.add("hidden");
+    document.getElementById("secondPage").classList.remove("hidden");
+}
+
+function nextPage2() {
+    document.getElementById("secondPage").classList.add("hidden");
+    document.getElementById("finalPage").classList.remove("hidden");
+}
+
+function moveButton() {
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    document.getElementById("noBtn").style.left = x + "px";
+    document.getElementById("noBtn").style.top = y + "px";
+}
+
+function yesClicked() {
+    document.body.innerHTML = "<h1 style='margin-top:200px; font-size:50px; color:white;'>Yayyyy ❤️ I Love You So Much 😍</h1>";
+}
+</script>
+
+</body>
+</html>
