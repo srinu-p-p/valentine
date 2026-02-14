@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Forever ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ffb199,#ff0844);
+    background-size:400% 400%;
+    animation:gradient 12s ease infinite;
+    color:white;
+    text-align:center;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.page{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    transition:opacity 1s ease;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+p{
+    max-width:600px;
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.startBtn{
+    background:white;
+    color:#ff4f81;
+}
+
+.yesBtn{
+    background:#ff4f81;
+    color:white;
+}
+
+.noBtn{
+    background:white;
+    color:#ff4f81;
+    position:absolute;
+}
+
+.finalText{
+    font-family:'Dancing Script',cursive;
+    font-size:40px;
+    animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+    from{transform:scale(1)}
+    to{transform:scale(1.1)}
+}
+
+.heart{
+    position:absolute;
+    bottom:0;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);opacity:1}
+    100%{transform:translateY(-100vh);opacity:0}
+}
+
+/* Mobile adjustments */
+@media(max-width:500px){
+    h1{font-size:28px;}
+    p{font-size:14px;}
+    button{font-size:14px;padding:10px 20px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Background Music -->
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_c1f74c09e6.mp3?filename=romantic-background-112191.mp3" type="audio/mp3">
+</audio>
+
+<!-- Page 1 -->
+<div class="page" id="page1">
+    <h1>For The Most Beautiful Girl In My Life ❤️</h1>
+    <button class="startBtn" onclick="startLove()">Start 💖</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page hidden" id="page2">
+    <h1>You Are My Everything ✨</h1>
+    <p>
+        From the moment you came into my life, everything changed in the most beautiful way.
+        Your smile lights up my darkest days.
+        Your voice feels like peace to my heart.
+        The way you care, the way you understand me,
+        the way you support my dreams —
+        it makes me feel like the luckiest person alive.
+    </p>
+    <p>
+        You are not just beautiful on the outside,
+        but your heart is even more precious.
+        Your kindness, your laughter,
+        your cute expressions,
+        and the way you look at me —
+        that’s my favorite place in the world.
+    </p>
+    <button onclick="nextPage()">Next 💌</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page hidden" id="page3">
+    <h1>Will You Be My Forever? 💍❤️</h1>
+    <button class="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button class="noBtn" id="noBtn" onmouseover="moveButton()">No 😅</button>
+</div>
+
+<script>
+function startLove(){
+    document.getElementById("music").play();
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
+
+function nextPage(){
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("page3").classList.remove("hidden");
+}
+
+function moveButton(){
+    let btn=document.getElementById("noBtn");
+    btn.style.left=Math.random()*80+"%";
+    btn.style.top=Math.random()*80+"%";
+}
+
+function yesClicked(){
+    document.body.innerHTML = `
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;text-align:center;color:white;">
+            
+            <div style="font-size:90px;margin-bottom:20px;animation:pulse 2s infinite alternate;">
+                🧑‍🤝‍🧑
+            </div>
+            
+            <h1 class="finalText">
+                You Just Made Me The Happiest Person Alive ❤️
+            </h1>
+            
+            <p style="max-width:600px;font-size:18px;line-height:1.6;margin-top:20px;">
+                From this moment, it's you and me together.
+                Through every smile, every dream, every challenge —
+                I choose you.
+                Today, tomorrow, and forever.
+                I Love You Endless Times 💖
+            </p>
+        </div>
+    `;
+    
+    setInterval(createHearts,300);
+}
+
+function createHearts(){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},5000);
+}
+</script>
+
+</body>
+</html>
